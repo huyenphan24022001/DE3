@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Success";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Success</h2>
+<input type="hidden" name="Success" id="checkStatus" value="@ViewBag.Success" />
+<script>
+ var check = $("#checkStatus").val();
+ if (check != null) {
+     Swal.fire({
+
+         icon: 'success',
+         title: 'Thành công',
+         text: check,
+         showConfirmButton: true,
+
+     }).then((result) => {
+         if (result.isConfirmed) {
+             window.location.href = "https://localhost:44346/Home/Index";
+         }
+     })
+
+ }
+
+
+
+</script>
+

@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Error</h2>
+<input type="hidden" name="Error" id="checkStatus" value="@ViewBag.Error" />
+<script>
+ var check = $("#checkStatus").val();
+ if (check != null) {
+     Swal.fire({
+
+         icon: 'error',
+         title: 'Thất bại',
+         text: check,
+         showConfirmButton: true,
+
+     }).then((result) => {
+         if (result.isConfirmed) {
+             window.location.href = "https://localhost:44346/Home/Index";
+         }
+     })
+
+ }
+
+
+
+</script>

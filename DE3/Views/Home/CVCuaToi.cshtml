@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DE3.Models.CVCon>
+@{
+    ViewBag.Title = "CVCuaToi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 1;
+}
+
+
+
+
+
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên đầu công việc</th>
+            <th>Tên công việc</th>
+            <th>Mô tả</th>
+            <th>Thời gian bắt đầu</th>
+            <th>Thời gian kết thúc</th>
+            <th>Người thực hiện</th>
+            <th>Người giao</th>
+            <th>#</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@item.CVCha.TenCV</td>
+                <td>@item.TenCV</td>
+                <td>@item.MoTa</td>
+                <td>@item.ThgianBD</td>
+                <td>@item.ThgianKT</td>
+                <td>@item.NguoiTH</td>
+                <td>@item.NguoiGiao</td>
+                <td>
+
+
+
+                    <a href="@Url.Action("EditCVCon", "Home")">Edit</a> |
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+                    <a class="Delete" data-item="@item.ID" href="#">Delete</a>
+                </td>
+             
+            </tr>
+        }
+    </table>
+    <style>
+        button.swal2-confirm.btn.btn-success {
+            margin-left: 8px
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+
+
+        });
+
+    </script>
+

@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thêm mới đầu công việc</h2>
+
+<div class="w3agile-validation w3ls-validation">
+    <div class="panel panel-widget agile-validation">
+        <div class="validation-grids widget-shadow" data-example-id="basic-forms">
+            <div class="input-info">
+                <h3>Thông tin đầu công việc :</h3>
+            </div>
+            <div class="form-body form-body-info">
+                <form data-toggle="validator" novalidate="true" action="#" method="post">
+                    <div class="form-group ">
+                        <input type="text" class="form-control" id="TenCV" placeholder="Tên đầu công việc" name="TenCV" required="">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" min="1" class="form-control" id="MoTa" placeholder="Mô tả" name="MoTa" required="">
+
+                    </div>
+
+                    @*<ul class="bt-list " style="float: right">
+                        <li style="width: 100%"><a href="#" class="hvr-icon-grow col-9">Thêm CV</a></li>
+                    </ul>
+                    <br />*@
+                   
+                    @*<div id="ProfileUser" style="display:none">
+                        <div class="input-info">
+                            <h3>Thông tin công việc:</h3>
+                        </div>
+                        <div class="form-body form-body-info">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="TenCVCon" placeholder="Tên công việc" name="TenCVCon" required="">
+
+                            </div>
+                            <div class="form-group">
+                                <input type="text" data-toggle="validator" class="form-control" name="MoTa" id="MoTa" placeholder="Mô tả" required="">
+                            </div>
+                            <div class="form-group">
+                                <input type="datetime" data-toggle="validator" class="form-control" id="ThgianBD" name="ThgianBD" placeholder="Thời gian bắt đầu" required="">
+                            </div>
+                            <div class="form-group">
+                                <input type="datetime" data-toggle="validator" class="form-control" id="ThgianKT" name="ThgianKT" placeholder="Thời gian kết thúc" required="">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" data-toggle="validator" class="form-control" id="NguoiTH" name="NguoiTH" placeholder="Người thực hiện" required="">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" data-toggle="validator" class="form-control" id="NguoiGiao" name="NguoiGiao" placeholder="Người giao việc" required="">
+                            </div>
+                        </div>
+                    </div>*@
+                    <br />
+                    <div class="bottom">
+
+                        <div class="form-group">
+                            <button type="submit" onclick="return checkday()" class="btn btn-primary ">Thêm</button>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script>
+    
+
+    function checkday() {
+       
+            var CCCD = $("#CCCD").val();
+            var Phone = $("#Phone").val();
+            console.log(CCCD.length)
+            if (CCCD.length != 12) {
+                var text = "CCCD phải có 12 ký tự";
+                window.location.href = "https://localhost:44346/Home/Error?MaError=" + text
+                return false;
+            }
+            if (Phone.length != 10) {
+                var text = "Phone phải có 10 ký tự";
+                window.location.href = "https://localhost:44346/Home/Error?MaError=" + text
+                return false;
+            }
+        
+
+
+        return true;
+    }
+</script>
+
+
+
+

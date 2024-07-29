@@ -1,0 +1,83 @@
+﻿@model IEnumerable<DE3.Models.CVCon>
+@{
+    ViewBag.Title = "CVCaNhan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 1;
+}
+
+<form action="#" method="get">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label for="selector1" class="col-sm-4 control-label">Người thực hiện</label>
+            <div class="col-sm-8">
+                <select name="name" id="selector1" class="form-control1">
+                    <option value="ko">------------------------------</option>
+                    <option value="Huyền">Huyền</option>
+                    <option value="Vũ">Vũ</option>
+                    <option value="Kiệt">Kiệt</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <button type="submit" class="btn btn-default w3ls-button">Tìm Kiếm</button>
+
+        </div>
+    </div>
+
+</form>
+
+
+<br />
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên đầu công việc</th>
+            <th>Tên công việc</th>
+            <th>Mô tả</th>
+            <th>Thời gian bắt đầu</th>
+            <th>Thời gian kết thúc</th>
+            <th>Người thực hiện</th>
+            <th>Người giao</th>
+            <th>#</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@i</td>
+            <td>@item.CVCha.TenCV</td>
+            <td>@item.TenCV</td>
+            <td>@item.MoTa</td>
+            <td>@item.ThgianBD</td>
+            <td>@item.ThgianKT</td>
+            <td>@item.NguoiTH</td>
+            <td>@item.NguoiGiao</td>
+            <td>
+
+
+
+                <a href="@Url.Action("EditCVCon", "Home")">Edit</a> |
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+                <a class="Delete" data-item="@item.ID" href="#">Delete</a>
+            </td>
+          
+        </tr>
+        }
+</table>
+<style>
+    button.swal2-confirm.btn.btn-success {
+        margin-left: 8px
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+
+
+    });
+   
+</script>

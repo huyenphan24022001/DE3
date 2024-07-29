@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f82d4437d6454fdb85a04da4867b8409" Name="Diagram1">
+        <EntityTypeShape EntityType="DE3Model.CVCha" Width="1.5" PointX="0.75" PointY="4.5" />
+        <EntityTypeShape EntityType="DE3Model.CVCon" Width="1.5" PointX="3" PointY="4" />
+        <EntityTypeShape EntityType="DE3Model.Token" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="DE3Model.User" Width="1.5" PointX="0.75" PointY="0.875" />
+        <AssociationConnector Association="DE3Model.FK__CVCon__CvChaID__4BAC3F29" />
+        <AssociationConnector Association="DE3Model.FK__Token__Users_ID__5EBF139D" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,11 @@
+Viết ứng dụng web quản lý công việc của đơn vị, cài đặt theo mô hình MVC thực hiện các chức năng sau:
+-	Quản lý công việc (thêm, cập nhật, xóa, danh sách công việc con, danh sách công việc) (30đ)
+-	Xem danh sách công việc cá nhân. (10đ)
+-	Chức năng hiển thị công việc trong ngày của người đang sử dụng (10đ)
+Thông tin công việc:
+-	Tên công việc
+-	Mô tả
+-	Thời gian bắt đầu,
+-	Thời gian kết thúc
+-	Người thực hiện
+-	Người giao

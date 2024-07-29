@@ -1,0 +1,131 @@
+﻿@model IEnumerable<DE3.Models.CVCha>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 1;
+}
+
+
+<h2>Quản lý đầu công việc</h2>
+
+<p>
+
+    <ul class="bt-list">
+
+
+
+        <li><a href="@Url.Action("Create", "Home")" class="hvr-icon-float-away col-10">Thêm mới</a></li>
+
+    </ul>
+</p>
+<br />
+
+<br />
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên đầu công việc</th>
+            <th>Mô tả</th>
+            <th>Số công việc con</th>
+           
+            <th>#</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@item.TenCV</td>
+                <td>@item.MoTa</td>
+                <td>6</td>
+               
+                <td>
+
+
+
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+                    <a class="Delete" data-item="@item.ID" href="#">Delete</a>
+                </td>
+            </tr>
+        }
+
+
+</table>
+<style>
+    button.swal2-confirm.btn.btn-success {
+        margin-left: 8px
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+
+
+    });
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+    })
+    $(".Delete").click(function () {
+        var id = $(this).attr("data-item");
+        console.log(id);
+        swalWithBootstrapButtons.fire({
+            title: 'Bạn đã chắc chắn?',
+            text: "Nếu bạn xóa thì không khôi phục được!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Vâng',
+            cancelButtonText: 'Hủy!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "GET",
+                    url: "https://localhost:44329/Home/Delete?ID=" + id,
+                    success: function (data) {
+                        if (data.mess == "success") {
+                            swalWithBootstrapButtons.fire({
+
+                                icon: 'success',
+                                title: 'Đã xóa',
+                                text: 'Bạn đã xóa thành công',
+                                showConfirmButton: true,
+
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.reload()
+                                }
+                            })
+
+                        }
+                        else {
+                            swalWithBootstrapButtons.fire(
+                                'Có lỗi',
+                                'Có lỗi xảy ra, vui lòng thử lại.',
+                                'error'
+                            )
+                        }
+                    }
+                });
+
+
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Đã hủy',
+                    'Đã hủy thao thác từ chối yêu cầu',
+                    'error'
+                )
+            }
+        })
+    })
+</script>
